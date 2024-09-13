@@ -76,9 +76,9 @@ export const CollectionArchive: React.FC<Props> = props => {
   const isRequesting = useRef(false)
   const [page, setPage] = useState(1)
 
-  const categories = (categoriesFilters || [])
-    .map(cat => (typeof cat === 'object' ? cat?.id : cat))
-    .join(',')
+  // const categories = (categoriesFilters || [])
+  //   .map(cat => (typeof cat === 'object' ? cat?.id : cat))
+  //   .join(',')
 
   const scrollToRef = useCallback(() => {
     const { current } = scrollRef
@@ -171,10 +171,9 @@ export const CollectionArchive: React.FC<Props> = props => {
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
       <div className={classes.scrollRef} ref={scrollRef} />
-      {!isLoading && error && <Gutter>{error}</Gutter>}
+      {!isLoading && error && <div>{error}</div>}
       <Fragment>
         {showPageRange !== false && populateBy !== 'selection' && (
-          <Gutter>
             <div className={classes.pageRange}>
               <PageRange
                 collection={relationTo}
@@ -183,22 +182,18 @@ export const CollectionArchive: React.FC<Props> = props => {
                 totalDocs={results.totalDocs}
               />
             </div>
-          </Gutter>
         )}
-        <Gutter>
           <div className={classes.grid}>
             {results.docs?.map((result, index) => {
               if (typeof result === 'object' && result !== null) {
                 return (
-                  <div className={classes.column} key={index}>
                     <Card doc={result} relationTo={relationTo} showCategories />
-                  </div>
                 )
               }
 
               return null
             })}
-          </div>
+            </div>
           {results.totalPages > 1 && populateBy !== 'selection' && (
             <Pagination
               className={classes.pagination}
@@ -207,7 +202,6 @@ export const CollectionArchive: React.FC<Props> = props => {
               totalPages={results.totalPages}
             />
           )}
-        </Gutter>
       </Fragment>
     </div>
   )

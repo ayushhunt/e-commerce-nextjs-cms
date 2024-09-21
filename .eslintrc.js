@@ -3,6 +3,8 @@ module.exports = {
   extends: ['plugin:@next/next/recommended', '@payloadcms'],
   ignorePatterns: ['**/payload-types.ts'],
   plugins: ['prettier'],
-
-  //not showing the error in my system so rules not added 
+  rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-console': 'off',
+  },
 }

@@ -12,7 +12,7 @@ type CategoryCardProps = {
 }
 
 const CategoryCard = ({ category }: CategoryCardProps) => {
-  const media =  category.media ? (category.media as Media) : null;
+  const media = category.media ? (category.media as Media) : null
   const { setCategoryFilters } = useFilter()
 
   return (

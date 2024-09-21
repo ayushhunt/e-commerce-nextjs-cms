@@ -1,7 +1,7 @@
 'use client'
 
-import { Console } from 'console'
 import { createContext, ReactNode, SetStateAction, useContext, useState } from 'react'
+import { Console } from 'console'
 
 interface IContextType {
   categoryFilters: string[]
@@ -22,7 +22,7 @@ const FilterContext = createContext<IContextType>(INITIAL_FILTER_DATA)
 export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
   const [categoryFilters, setCategoryFilters] = useState([])
   const [sort, setSort] = useState('-createdAt')
-  console.log("inside filters");
+  console.log('inside filters')
   return (
     <FilterContext.Provider
       value={{
